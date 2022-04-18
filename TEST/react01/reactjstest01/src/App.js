@@ -2,6 +2,26 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Customer from './components/Customer'
+import Table from '@mui/material/Table';
+import Paper from "@mui/material/Paper";
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+
+
+
+
+/*const styles = theme => ({
+    root: {
+        width: '100%',
+        marginTop: theme.spacing.unit*3,
+        overflowX:"auto"
+    },
+    table:{
+        minWidth: 1080
+    }
+
+})*/
 
 const customer = [
     {
@@ -33,9 +53,23 @@ const customer = [
 
 class App extends Component{
     render() {
+
         return (
-            <div>
-                {
+            <div >
+                <Table>
+                    <TableHead>
+                        <TableCell>번호</TableCell>
+                        <TableCell>이미지</TableCell>
+                        <TableCell>이름</TableCell>
+                        <TableCell>생일</TableCell>
+                        <TableCell>성별</TableCell>
+                        <TableCell>직업</TableCell>
+                    </TableHead>
+                    <TableBody>
+                        {customer.map(c =>{ return ( <Customer  key={c.id}  id={c.id}  image={c.image} name={c.name} birthday={c.birthday} gender={c.gender}  job={c.job} />  );   })}
+                    </TableBody>
+                </Table>
+                {/*{
                     customer.map( c=> {
                         return (
                             <Customer
@@ -49,7 +83,7 @@ class App extends Component{
                             />
                         )
                     })
-                }
+                }*/}
             </div>
         );
     }
